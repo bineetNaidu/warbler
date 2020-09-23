@@ -11,4 +11,7 @@ mongoose.connect(
   },
   () => console.log("Warbler DB started...")
 );
+
+// EXPORTS
 module.exports.User = require("./User");
+module.exports.Message = require("./Message");
