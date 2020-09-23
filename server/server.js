@@ -7,6 +7,7 @@ const errorHandler = require("./handlers/error");
 
 // require routes
 const authRoutes = require("./routes/auth");
+const msgsRoutes = require("./routes/messages");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // ROUTE UNMOUNTS
 app.use("/api/auth", authRoutes);
+app.use("/api/users/:id/messages", msgsRoutes);
 
 app.use((req, res, next) => {
   let err = new Error("Not Found");
