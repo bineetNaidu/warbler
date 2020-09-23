@@ -1,8 +1,12 @@
 // REQUIREMENTS
+require("dotenv").config();
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const errorHandler = require("./handlers/error");
+
+// require routes
+const authRoutes = require("./routes/auth");
 
 const app = express();
 
@@ -12,6 +16,7 @@ app.use(logger("common"));
 app.use(express.json());
 
 // ROUTE UNMOUNTS
+app.use("/api/auth", authRoutes);
 
 app.use((req, res, next) => {
   let err = new Error("Not Found");
