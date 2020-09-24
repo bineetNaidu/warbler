@@ -10,13 +10,13 @@ export function authUser(type, userData) {
     return new Promise((resolve, reject) => {
       return apiCall("post", `/api/auth/${type}`, userData)
         .then(({ token, ...user }) => {
-          localStorage.setItem("wrabler-jwtToken", token);
+          localStorage.setItem("warbler-jwtToken", token);
           dispatch(setCurrentUser(user));
           dispatch(removeError());
           resolve(); // indicate that the API call succeeded
         })
         .catch((err) => {
-          dispatch(addError(err));
+          dispatch(addError(err.message));
           reject(); // indicate the API call failed
         });
     });

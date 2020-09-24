@@ -6,14 +6,16 @@ import Authform from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
 
-const Main = ({ authUser, errors, removeError }) => {
+const Main = ({ authUser, errors, removeError, currentUser }) => {
   return (
     <div className="container">
       <Switch>
         <Route
           exact
           path="/"
-          render={(routerProps) => <Home {...routerProps} />}
+          render={(routerProps) => (
+            <Home {...routerProps} currentUser={currentUser} />
+          )}
         />
         <Route
           exact

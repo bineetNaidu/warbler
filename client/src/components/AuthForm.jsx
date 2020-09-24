@@ -24,12 +24,17 @@ const AuthForm = ({
     e.preventDefault();
     const authType = signup ? "signup" : "signin";
     const data = { email, username, password, profileImageUrl };
-    onAuth(authType, data).then(() => {
-      resetEmail();
-      resetUsername();
-      resetPassword();
-      resetImgUrl();
-    });
+    onAuth(authType, data)
+      .then(() => {
+        resetEmail();
+        resetUsername();
+        resetPassword();
+        resetImgUrl();
+        history.push("/");
+      })
+      .catch((err) => {
+        return;
+      });
   };
 
   history.listen(() => removeError());
@@ -72,13 +77,13 @@ const AuthForm = ({
                   id="username"
                 />
 
-                <label htmlFor="profileImg">Profile Image:</label>
+                <label htmlFor="profileImageUrl">Profile Image:</label>
                 <input
                   type="text"
                   className="form-control"
                   value={profileImageUrl}
                   onChange={handleProfileImageUrl}
-                  id="profileImg"
+                  id="profileImageUrl"
                 />
               </>
             )}
