@@ -4,6 +4,13 @@ import { addError, removeError } from "./errors";
 
 export const setCurrentUser = (user) => ({ type: SET_CURRENT_USER, user });
 
+export const logout = () => {
+  return (dispatch) => {
+    localStorage.setItem("warbler-jwtToken", "");
+    dispatch(setCurrentUser({}));
+  };
+};
+
 export function authUser(type, userData) {
   return (dispatch) => {
     // wrap our thunk in a promise so we can wait for the API call
