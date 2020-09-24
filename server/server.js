@@ -4,6 +4,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const errorHandler = require("./handlers/error");
+const { loginRequired, ensureCorrectUser } = require("./middlewares/auth");
 
 // require routes
 const authRoutes = require("./routes/auth");
@@ -18,7 +19,12 @@ app.use(express.json());
 
 // ROUTE UNMOUNTS
 app.use("/api/auth", authRoutes);
-app.use("/api/users/:id/messages", msgsRoutes);
+app.use(
+  "/api/users/:id/messages",
+  loginRequired,
+  ensureCorrectUser,
+  msgsRoutes
+);
 
 app.use((req, res, next) => {
   let err = new Error("Not Found");
