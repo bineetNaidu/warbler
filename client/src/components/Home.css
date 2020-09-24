@@ -1,0 +1,19 @@
+.home-hero {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("../images/signed-out-home.jpg");
+  z-index: -1;
+  text-align: center;
+  padding: 1rem;
+  background-position: center center;
+  color: #fff;
+  text-shadow: 0 0 8px #66757f;
+  background-size: cover;
+}
