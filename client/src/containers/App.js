@@ -4,8 +4,18 @@ import { configStore } from "../store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./Navbar";
 import Main from "./Main";
+import { setAuthorizationToken, setCurrentUser } from "../store/actions/auth";
+import JwtDecode from "jwt-decode";
 
-// STATICS
+if (localStorage.warbler_jwtToken) {
+  setAuthorizationToken(localStorage.warbler_jwtToken);
+  // prevent some from manually editing the key of jwt in localStorage
+  try {
+    store.dispatch(setCurrentUser(JwtDecode(localStorage.warbler_jwtToken)));
+  } catch (e) {
+    store.dispatch(setCurrentUser({}));
+  }
+}
 
 function App() {
   // STATES
