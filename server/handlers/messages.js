@@ -28,8 +28,25 @@ const createMessage = async (req, res, next) => {
   }
 };
 
-const editMessage = (req, res, next) => {};
+const getMessage = async (req, res, next) => {
+  // prefix - GET /api/users/:id/messages/:message_id
+  try {
+    const message = await db.Message.findOne({ _id: req.params.message_id });
+    return res.status(200).json(message);
+  } catch (err) {
+    next(err);
+  }
+};
 
-const deleteMessage = (req, res, next) => {};
+const deleteMessage = async (req, res, next) => {
+  // prefix - DELETE /api/users/:id/messages/:message_id
+  try {
+    const message = await db.Message.findOne({ _id: req.params.message_id });
+    await message.remove();
+    return res.status(200).json(message);
+  } catch (err) {
+    next(err);
+  }
+};
 
-module.exports = { createMessage, editMessage, deleteMessage };
+module.exports = { createMessage, getMessage, deleteMessage };
