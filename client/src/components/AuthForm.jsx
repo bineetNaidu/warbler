@@ -1,7 +1,15 @@
 import React from "react";
 import useFormState from "../customs/useFormState";
 
-const AuthForm = ({ heading, btnTxt, signup, onAuth }) => {
+const AuthForm = ({
+  heading,
+  btnTxt,
+  signup,
+  onAuth,
+  errors,
+  removeError,
+  history,
+}) => {
   // STATES
   // HOOKS && CONTEXTS
   const [email, handleEmail, resetEmail] = useFormState("");
@@ -17,13 +25,14 @@ const AuthForm = ({ heading, btnTxt, signup, onAuth }) => {
     const authType = signup ? "signup" : "signin";
     const data = { email, username, password, profileImageUrl };
     onAuth(authType, data).then(() => {
-      console.log("Signup IN");
-      // resetEmail();
-      // resetUsername();
-      // resetPassword();
-      // resetImgUrl();
+      resetEmail();
+      resetUsername();
+      resetPassword();
+      resetImgUrl();
     });
   };
+
+  history.listen(() => removeError());
 
   return (
     <div>
@@ -31,6 +40,9 @@ const AuthForm = ({ heading, btnTxt, signup, onAuth }) => {
         <div className="colo-md-6">
           <form onSubmit={handleSubmit}>
             <h2>{heading}</h2>
+            {errors.message && (
+              <div className="alert alert-danger">{errors.message}</div>
+            )}
             <label htmlFor="email">Email:</label>
             <input
               type="email"
