@@ -11,4 +11,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e6ecf0;
+}
+
+.onBoarding > .navbar {
+  background-image: url("./images/nav-bg.png");
+  background-size: 100% 100%;
 }

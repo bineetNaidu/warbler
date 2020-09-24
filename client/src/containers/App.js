@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { configStore } from "../store";
 import { BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./Navbar";
 
 // STATICS
 
@@ -16,7 +17,9 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div>Hello Warbler....</div>
+        <div className="onBoarding">
+          <Navbar />
+        </div>
       </Router>
     </Provider>
   );
