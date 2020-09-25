@@ -5,6 +5,8 @@ import Home from "../components/Home";
 import Authform from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
+import withAuth from "../hocs/withAuth";
+import MessageForm from "./MessageForm";
 
 const Main = ({ authUser, errors, removeError, currentUser }) => {
   return (
@@ -45,6 +47,11 @@ const Main = ({ authUser, errors, removeError, currentUser }) => {
               heading="Join Warbler today."
             />
           )}
+        />
+        <Route
+          exact
+          path="/users/:id/messages/new"
+          component={withAuth(MessageForm)}
         />
       </Switch>
     </div>
