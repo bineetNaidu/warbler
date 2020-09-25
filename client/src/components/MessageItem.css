@@ -1,0 +1,11 @@
+.timeline-image {
+  border-radius: 40px;
+  height: 48px;
+  width: 48px;
+  margin: 2px 30px 10px 10px;
+}
+
+.message-displayBox {
+  display: flex;
+  justify-content: space-between;
+}

@@ -13,7 +13,7 @@ const UserInfo = ({ username, profileImageUrl }) => (
         width="200"
         className="img-thumbnail"
       />
-      <h1>{username}</h1>
+      {/* <h1>{username}</h1> */}
     </div>
   </aside>
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Switch, Route, Redirect } from "react-router-dom";
+import { withRouter, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Home from "../components/Home";
 import Authform from "../components/AuthForm";

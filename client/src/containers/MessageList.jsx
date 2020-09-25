@@ -12,6 +12,7 @@ const MessageList = ({ fetchMessages, messages, removeMsg, currentUser }) => {
   // HOOKS && CONTEXT
   useEffect(() => {
     fetchMessages();
+    // eslint-disable-next-line
   }, []);
 
   // FUNCTIONS

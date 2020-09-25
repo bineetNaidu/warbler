@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store/actions/auth";
@@ -36,7 +36,9 @@ const Navbar = ({ logout, currentUser }) => {
                 </Link>
               </li>
               <li>
-                <a onClick={handleLogout}>Logout</a>
+                <Link to="#" onClick={handleLogout}>
+                  Logout
+                </Link>
               </li>
             </>
           ) : (

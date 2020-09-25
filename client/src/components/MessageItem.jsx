@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 // STATICS
 import defaultImg from "../images/default-profile-image.jpg";
+import "./MessageItem.css";
 
 const MessageItem = ({ createdAt, user, text, removeMsg, isCorrectUser }) => {
   const { username, profileImageUrl } = user;
   return (
-    <ul className="list-group-item">
+    <ul className="list-group-item mt-2">
       <img
         src={profileImageUrl || defaultImg}
         alt={`${username}'s avatar`}
@@ -23,12 +24,14 @@ const MessageItem = ({ createdAt, user, text, removeMsg, isCorrectUser }) => {
             {createdAt}
           </Moment>
         </span>
-        <p>{text}</p>
-        {isCorrectUser && (
-          <button className="btn btn-danger" onClick={removeMsg}>
-            Delete
-          </button>
-        )}
+        <div className="message-displayBox">
+          <p>{text}</p>
+          {isCorrectUser && (
+            <button className="btn btn-danger" onClick={removeMsg}>
+              Delete
+            </button>
+          )}
+        </div>
       </div>
     </ul>
   );
