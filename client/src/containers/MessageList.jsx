@@ -6,13 +6,13 @@ import MessageItem from "../components/MessageItem";
 // STATICS
 import "./MessageList.css";
 
-const MessageList = ({ fetchMessages, messages, removeMsg }) => {
+const MessageList = ({ fetchMessages, messages, removeMsg, currentUser }) => {
   // STATES
 
   // HOOKS && CONTEXT
   useEffect(() => {
     fetchMessages();
-  }, [messages]);
+  }, []);
 
   // FUNCTIONS
 
@@ -25,6 +25,7 @@ const MessageList = ({ fetchMessages, messages, removeMsg }) => {
               key={m._id}
               {...m}
               removeMsg={removeMsg.bind(this, m.user._id, m._id)}
+              isCorrectUser={currentUser === m.user._id}
             />
           ))}
         </ul>
@@ -35,6 +36,7 @@ const MessageList = ({ fetchMessages, messages, removeMsg }) => {
 function mapStateToProps(state) {
   return {
     messages: state.message,
+    currentUser: state.currentUser.user.id,
   };
 }
 

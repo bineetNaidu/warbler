@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // STATICS
 import defaultImg from "../images/default-profile-image.jpg";
 
-const MessageItem = ({ createdAt, user, text, removeMsg }) => {
+const MessageItem = ({ createdAt, user, text, removeMsg, isCorrectUser }) => {
   const { username, profileImageUrl } = user;
   return (
     <ul className="list-group-item">
@@ -24,9 +24,11 @@ const MessageItem = ({ createdAt, user, text, removeMsg }) => {
           </Moment>
         </span>
         <p>{text}</p>
-        <button className="btn btn-danger" onClick={removeMsg}>
-          Delete
-        </button>
+        {isCorrectUser && (
+          <button className="btn btn-danger" onClick={removeMsg}>
+            Delete
+          </button>
+        )}
       </div>
     </ul>
   );
