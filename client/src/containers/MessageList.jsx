@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchMessages } from "../store/actions/messages";
+import { fetchMessages, removeMsg } from "../store/actions/messages";
 import MessageItem from "../components/MessageItem";
 
 // STATICS
 import "./MessageList.css";
 
-const MessageList = ({ fetchMessages, messages }) => {
+const MessageList = ({ fetchMessages, messages, removeMsg }) => {
   // STATES
 
   // HOOKS && CONTEXT
   useEffect(() => {
     fetchMessages();
-  }, []);
+  }, [messages]);
 
   // FUNCTIONS
 
@@ -21,7 +21,11 @@ const MessageList = ({ fetchMessages, messages }) => {
       <div className="offset-1 col-sm-10">
         <ul className="list-group messages">
           {messages.map((m) => (
-            <MessageItem key={m._id} {...m} />
+            <MessageItem
+              key={m._id}
+              {...m}
+              removeMsg={removeMsg.bind(this, m.user._id, m._id)}
+            />
           ))}
         </ul>
       </div>
@@ -34,4 +38,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchMessages })(MessageList);
+export default connect(mapStateToProps, { fetchMessages, removeMsg })(
+  MessageList
+);

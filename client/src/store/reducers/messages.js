@@ -5,6 +5,9 @@ const message = (state = [], action) => {
     case LOAD_MESSAGES:
       return [...action.messages];
 
+    case REMOVE_MESSAGES:
+      return state.filter(({ _id }) => _id !== action.id);
+
     default:
       return state;
   }
