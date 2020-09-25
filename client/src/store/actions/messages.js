@@ -4,10 +4,14 @@ import { LOAD_MESSAGES, REMOVE_MESSAGES } from "../actionTypes";
 
 export const loadMessages = (messages) => ({ type: LOAD_MESSAGES, messages });
 
-export const fetchMessage = () => {
+export const fetchMessages = () => {
   return (dispatch) => {
-    return apiCall("GET", "/api/messages")
-      .then((res) => dispatch(loadMessages(res)))
-      .catch((err) => addError(err.message));
+    return apiCall("get", "/api/messages")
+      .then((res) => {
+        dispatch(loadMessages(res));
+      })
+      .catch((err) => {
+        dispatch(addError(err.message));
+      });
   };
 };

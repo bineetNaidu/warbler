@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MessageTimeline from "./MessageTimeline";
 
 // STATICS
 import "./Home.css";
@@ -16,9 +17,7 @@ const Home = ({ currentUser }) => {
           </Link>
         </div>
       ) : (
-        <div>
-          <pre>{JSON.stringify(currentUser, null, 2)}</pre>
-        </div>
+        <MessageTimeline />
       )}
     </>
   );
