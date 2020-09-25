@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { fetchMessages } from "../store/actions/messages";
 import MessageItem from "../components/MessageItem";
 
+// STATICS
+import "./MessageList.css";
+
 const MessageList = ({ fetchMessages, messages }) => {
   // STATES
 
@@ -14,10 +17,14 @@ const MessageList = ({ fetchMessages, messages }) => {
   // FUNCTIONS
 
   return (
-    <div>
-      {messages.map((m) => (
-        <MessageItem key={m._id} {...m} />
-      ))}
+    <div className="row col-sm-8">
+      <div className="offset-1 col-sm-10">
+        <ul className="list-group messages">
+          {messages.map((m) => (
+            <MessageItem key={m._id} {...m} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

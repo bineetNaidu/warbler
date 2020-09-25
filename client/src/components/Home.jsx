@@ -17,7 +17,7 @@ const Home = ({ currentUser }) => {
           </Link>
         </div>
       ) : (
-        <MessageTimeline />
+        <MessageTimeline {...currentUser.user} />
       )}
     </>
   );

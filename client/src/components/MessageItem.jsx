@@ -8,7 +8,7 @@ import defaultImg from "../images/default-profile-image.jpg";
 const MessageItem = ({ createdAt, user, text }) => {
   const { username, profileImageUrl } = user;
   return (
-    <div>
+    <ul className="list-group-item">
       <img
         src={profileImageUrl || defaultImg}
         alt={`${username}'s avatar`}
@@ -25,7 +25,7 @@ const MessageItem = ({ createdAt, user, text }) => {
         </span>
         <p>{text}</p>
       </div>
-    </div>
+    </ul>
   );
 };
 
